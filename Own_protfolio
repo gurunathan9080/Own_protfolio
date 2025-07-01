@@ -1,0 +1,61 @@
+
+import streamlit as st
+from PIL import Image
+import requests
+from io import BytesIO
+
+# Page config
+st.set_page_config(page_title="My Portfolio", layout="wide")
+
+# Load profile image from a URL
+image_url = "https://avatars.githubusercontent.com/u/9919?s=280&v=4"  # Example image (GitHub logo)
+response = requests.get(image_url)
+img = Image.open(BytesIO(response.content))
+
+# Sidebar
+with st.sidebar:
+    st.image(img, width=150)
+    st.title("👋 Hello!")
+    st.write("I'm [gurunathan], a Python Developer passionate about AI, web dev, and automation.")
+
+# Header
+st.title("💼 Portfolio")
+st.write("Welcome to my guru's interative potfolio!")
+
+# About
+st.header("🧑 About Me")
+st.write("""
+I'm a software developer with experience in:
+- Python, JavaScript, HTML, CSS
+- Flask, Streamlit, 
+- AI and automation project
+""")
+
+# Skills
+st.header("🛠 Skills")
+st.write("""
+- **Languages:** Python, Java, HTML, CSS, JavaScript  
+- **Frameworks:** Streamlit, Flask 
+- **Tools:** VS Code
+""")
+
+# Projects
+st.header("📂 Projects")
+st.subheader("1. Color Prediction")
+st.write("The Color Prediction web is provide only for OK win Gamers .")
+st.subheader("2. Own protfolio")
+st.write("An app About me .")
+st.subheader("3. GPS Tracker App")
+st.write("A real-time location tracker built with Folium and Selenium.")
+
+# Contact
+st.header("📬 Contact Me")
+contact_form = """
+<form action="https://formsubmit.co/your@email.com" method="POST">
+     <input type="text" name="name" placeholder="Your name" required><br><br>
+     <input type="email" name="email" placeholder="Your email" required><br><br>
+     <textarea name="message" placeholder="Your message here" rows="4" required></textarea><br><br>
+     <button type="submit">Send</button>
+</form>
+"""
+st.markdown(contact_form, unsafe_allow_html=True)
